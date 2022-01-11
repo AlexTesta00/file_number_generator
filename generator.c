@@ -14,7 +14,7 @@ void generate_file(char* file_name, unsigned short size, int* data);
 
 
 int main(void) {
-    int number_file, max_number, step, validator, i, size;
+    int number_file, max_number, step, validator, i, size, temp;
     int *data;
     char buffer[MAX_BUFFER];
     char* num;
@@ -22,20 +22,44 @@ int main(void) {
     number_file = max_number = validator = size = 0;
     data = NULL;
     num = NULL;
+    validator = 1;
 
     printf("*****************************\n*                           *\n* File Number Generator     *\n* Author: Alex Testa        *\n*                           *\n*****************************\n");
     printf("\nInsert data\n");
     printf("[*]How many file, do you want generate? : ");
     validator = scanf("%d", &number_file);
-    fflush(stdin);
+    /* Validation */
+    while(validator != 1)
+    {
+        while((temp=getchar()) != EOF && temp != '\n');
+        printf("\n[*]You must only inset integer number!!!please, retry : ");
+        validator = scanf("%d", &number_file);
+        fflush(stdin);
+    }
 
     printf("[*]How many steps? : ");
     validator = scanf("%d", &step);
-    fflush(stdin);
+
+    /* Validation */
+    while(validator != 1)
+    {
+        while((temp=getchar()) != EOF && temp != '\n');
+        printf("\n[*]You must only inset integer number!!!please, retry : ");
+        validator = scanf("%d", &step);
+        fflush(stdin);
+    }
 
     printf("[*]What's the max of number tolerate? : ");
     validator = scanf("%d", &max_number);
-    fflush(stdin);
+
+    /* Validation */
+    while(validator != 1)
+    {
+        while((temp=getchar()) != EOF && temp != '\n');
+        printf("\n[*]You must only inset integer number!!!please, retry : ");
+        validator = scanf("%d", &max_number);
+        fflush(stdin);
+    }
 
     printf("\n[*]Just a moment...i create the files\n");
     for(i = 0; i < number_file; i++)
